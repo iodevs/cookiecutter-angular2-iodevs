@@ -33,8 +33,9 @@
         we can use Angular's [(ngModel)] syntax
         <input type="text" [(ngModel)]="localState.value" autofocus>
       -->
-
+    {% raw %}
     <pre>this.localState = {{ localState | json }}</pre>
+    {% endraw %}
 
   </div>
 
