@@ -1,5 +1,8 @@
 # cookiecutter-angular2-iodevs
 
+[![npm dependencies](https://david-dm.org/iodevs/cookiecutter-angular2-iodevs.svg?path=%7B%7Bcookiecutter.project_name%7D%7D)](https://david-dm.org/iodevs/cookiecutter-angular2-iodevs?path=%7B%7Bcookiecutter.project_name%7D%7D)
+[![npm dev dependencies](https://david-dm.org/iodevs/cookiecutter-angular2-iodevs/dev-status.svg?path={{cookiecutter.project_name}})](https://david-dm.org/iodevs/cookiecutter-angular2-iodevs?path=%7B%7Bcookiecutter.project_name%7D%7D&info=devDependencies#info=devDependencies&view=table)
+
 ### Overview
 
 This is [cookiecutter](https://github.com/audreyr/cookiecutter) template for modified [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter), see below on File structure...
@@ -71,4 +74,4 @@ app/
 
 MIT license
 
-    
+
