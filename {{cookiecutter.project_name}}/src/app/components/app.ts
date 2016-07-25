@@ -2,10 +2,8 @@
  * Angular 2 decorators and services
  */
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { RouteConfig } from '@angular/router-deprecated';
 
 import { HomeViewComponent } from '../views/home';
-import { RouterActiveDirective } from '../directives/router-active';
 
 /*
  * App Component
@@ -15,23 +13,23 @@ import { RouterActiveDirective } from '../directives/router-active';
   selector: 'iod-app',
   pipes: [ ],
   providers: [ ],
-  directives: [ RouterActiveDirective ],
+  directives: [],
   encapsulation: ViewEncapsulation.None,
   template: `
-    <span router-active>
-      <button [routerLink]=" ['Index'] ">
+    <span routerLinkActive="active">
+      <a routerLink="/">
         Index
-      </button>
+      </a>
     </span>
-    <span router-active>
-      <button [routerLink]=" ['Home'] ">
+    <span routerLinkActive="active">
+      <a routerLink="/home">
         Home
-      </button>
+      </a>
     </span>
-    <span router-active>
-      <button [routerLink]=" ['About'] ">
+    <span routerLinkActive="active">
+      <a routerLink="/about">
         About
-      </button>
+      </a>
     </span>
 
     <main>
@@ -39,16 +37,6 @@ import { RouterActiveDirective } from '../directives/router-active';
     </main>
   `
 })
-@RouteConfig([
-  { path: '/',      name: 'Index', component: HomeViewComponent, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: HomeViewComponent },
-  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  {
-      path: '/about',
-      name: 'About',
-      loader: () => require('es6-promise!../views/about')('AboutViewComponent')
-  }
-])
 export class AppComponent implements OnInit {
   loading = false;
   name = '{{cookiecutter.project_name}}';
@@ -62,11 +50,3 @@ export class AppComponent implements OnInit {
   }
 
 }
-
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */

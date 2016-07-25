@@ -3,5 +3,8 @@
   "homepage": "e.g. gitlab.com/your-account/Name-of-your-project",
   "description": "Short description of your project.",
   "repository_url": "e.g. gitlab.com",
-  "bugs_url": "e.g. trello.com"
+  "bugs_url": "e.g. trello.com",
+  "_copy_without_render": [
+    "node_modules"
+  ]
 }
