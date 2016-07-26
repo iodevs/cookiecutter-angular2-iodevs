@@ -3,9 +3,11 @@
  */
 
 // Angular 2
-import { FORM_PROVIDERS, PathLocationStrategy, LocationStrategy } from '@angular/common';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 // Angular 2 Http
 import { HTTP_PROVIDERS } from '@angular/http';
+// Angular 2 Forms
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
 // Angular 2 Material
 // TODO(gdi2290): replace with @angular2-material/all
 import { MATERIAL_PROVIDERS } from './material';
@@ -15,7 +17,8 @@ import { MATERIAL_PROVIDERS } from './material';
 * providers/directives/pipes that only live in our browser environment
 */
 export const APPLICATION_PROVIDERS = [
-  ...FORM_PROVIDERS,
+  disableDeprecatedForms(),
+  provideForms(),
   ...HTTP_PROVIDERS,
   ...MATERIAL_PROVIDERS,
   { provide: LocationStrategy, useClass: PathLocationStrategy }
