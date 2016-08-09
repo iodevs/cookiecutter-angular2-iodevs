@@ -16,25 +16,29 @@ import { HomeViewComponent } from '../views/home';
   directives: [],
   encapsulation: ViewEncapsulation.None,
   template: `
-    <span routerLinkActive="active">
-      <a routerLink="/">
-        Index
-      </a>
-    </span>
-    <span routerLinkActive="active">
-      <a routerLink="/home">
-        Home
-      </a>
-    </span>
-    <span routerLinkActive="active">
-      <a routerLink="/about">
-        About
-      </a>
-    </span>
+    <md-content>
+        <md-toolbar style="background-color: DeepSkyBlue;">
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+            <!--<span routerLinkActive="active">
+            <a routerLink="/home">
+                Home
+            </a>
+            </span>-->
+
+            <a md-button [routerLink]=" ['/'] ">
+                Index
+            </a>
+            <a md-button [routerLink]=" ['/home'] ">
+                Home
+            </a>
+            <a md-button [routerLink]=" ['/about'] ">
+                About
+            </a>
+
+        </md-toolbar>
+
+        <router-outlet></router-outlet>
+    </md-content>
   `
 })
 export class AppComponent implements OnInit {
