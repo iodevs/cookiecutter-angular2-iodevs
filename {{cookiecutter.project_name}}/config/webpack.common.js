@@ -13,6 +13,9 @@ var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), Cop
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 const HtmlElementsPlugin = require('./html-elements-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
 
 /*
  * Webpack Constants
@@ -56,8 +59,8 @@ module.exports = {
 
     'polyfills': './src/polyfills.browser.ts',
     'vendor':    './src/vendor.browser.ts',
-    'main':      './src/main.browser.ts'
-
+    'main':      './src/main.browser.ts',
+    'styles':    './src/app/styles/index.scss'
   },
 
   /*
@@ -82,7 +85,6 @@ module.exports = {
 
     alias: {
       // legacy imports pre-rc releases
-      'angular2': helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17')
     },
 
   },
@@ -120,9 +122,8 @@ module.exports = {
         exclude: [
           // these packages have problems with their sourcemaps
           helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular2-material'),
           helpers.root('node_modules/@angular'),
-          helpers.root('node_modules/ng2-redux')
+          helpers.root('node_modules/@ngrx/core'),
         ]
       }
 
@@ -177,7 +178,7 @@ module.exports = {
          */
         {
             test: /\.scss$/,
-            loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+            loader: ExtractTextPlugin.extract("style", ["css?sourceMap", "sass?sourceMap"])
         },
 
         /* Raw loader support for *.html
@@ -201,7 +202,6 @@ module.exports = {
    * See: http://webpack.github.io/docs/configuration.html#plugins
    */
   plugins: [
-
     /*
      * Plugin: ForkCheckerPlugin
      * Description: Do type checking in a separate process, so webpack don't need to wait.
@@ -233,6 +233,12 @@ module.exports = {
     }),
 
     /*
+     * Plugin: ExtractTextPlugin
+     * Description: Extract text and save her as file
+     */
+    new ExtractTextPlugin('[name].css'),
+
+    /*
      * Plugin: CopyWebpackPlugin
      * Description: Copy files and directories in webpack.
      *
@@ -254,6 +260,7 @@ module.exports = {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
+      inject: false,
       template: 'src/index.html',
       chunksSortMode: 'dependency'
     }),

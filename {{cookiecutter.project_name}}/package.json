@@ -101,7 +101,6 @@
     "zone.js": "~0.6.25"
   },
   "devDependencies": {
-    "@angularclass/angular2-beta-to-rc-alias": "^0.1.0",
     "@types/core-js": "^0.9.34",
     "@types/ramda": "0.0.2",
     "@types/source-map": "^0.1.27",
